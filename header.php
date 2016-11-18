@@ -33,17 +33,21 @@
                             <p><i class="fa fa-phone" aria-hidden="true"></i> &#40;04&#41;123 4567</p>
                             <p>My Bag</p>
                         </div>
-                    
-                    
-                    
-                    <div id="logo-area">
-                        <div id="header-logo" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                           <img src="http://localhost/wordpress/wp-content/uploads/2016/11/logo.jpg" class="img-responsive" alt="Responsive image">
-                        </div>
+                        
+                    <div id="background-horse">
+                        <div id="logo-area">
+                           
+                            <?php if ( get_header_image() ) : ?>
+                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                            <img src="<?php header_image(); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="">
+                            </a>
+                            <?php endif;?>
                             <form>
-                                <input type="text" name="search" placeholder="Search..">
+                            <input type="text" name="search" placeholder="Search"/>
                             </form>
-                    </div>
+                        </div>
+                    </div><!-- logo area -->
+                 </div>
                               
                         
 

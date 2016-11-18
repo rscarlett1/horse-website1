@@ -117,9 +117,9 @@ function horse_website_scripts() {
         
         //Add Google Fonts: Open Sans
         
-        wp_enqueue_style('horse-website-local-fonts', get_template_directory_uri() . 'fonts/custom-fonts.css');
+        wp_enqueue_style('horse-website-local-fonts', get_template_directory_uri() . '/fonts/custom-fonts.css');
         
-	wp_enqueue_style('horse-website-font-awesome', get_template_directory_uri() . 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' ,array(), '4.0.7', true );
+	wp_enqueue_script('horse-website-font-awesome', 'https://use.fontawesome.com/8eb7256293.js' ,[], '4.0.7', true );
         
         wp_enqueue_script( 'horse-website-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
