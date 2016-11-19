@@ -28,7 +28,7 @@ function horse_website_custom_header_setup() {
 		'height'                 => 250,
 		'flex-height'            => true,
 		'wp-head-callback'       => 'horse_website_header_style',
-	) ) );
+    ) ) );
 }
 add_action( 'after_setup_theme', 'horse_website_custom_header_setup' );
 
