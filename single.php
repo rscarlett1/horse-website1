@@ -27,11 +27,11 @@ get_header(); ?>
                     
                  <?php 
 			the_post_navigation( array(
-				'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Next', 'popperscores' ) . '</span> ' .
-					'<span class="screen-reader-text">' . __( 'Next post:', 'popperscores' ) . '</span> ' .
+				'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Next', 'horse-website' ) . '</span> ' .
+					'<span class="screen-reader-text">' . __( 'Next post:', 'horse-website' ) . '</span> ' .
 					'<span class="post-title">%title</span>',
-				'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Previous', 'popperscores' ) . '</span> ' .
-					'<span class="screen-reader-text">' . __( 'Previous post:', 'popperscores' ) . '</span> ' .
+				'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Previous', 'horse-website' ) . '</span> ' .
+					'<span class="screen-reader-text">' . __( 'Previous post:', 'horse-website' ) . '</span> ' .
 					'<span class="post-title">%title</span>',
 			) );
 			?>
