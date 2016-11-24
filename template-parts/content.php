@@ -1,54 +1,34 @@
 <?php
 /**
- * Template part for displaying posts.
+ * Template part for displaying page content in page.php.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package horse-website
  */
-
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-            
-            <?php
-            if (has_post_thumbnail() ) { ?>
-                <figure clas="featured-image">
-                <?php the_post_thumbnail(); ?>
-            </figure>
-            <?php }
-            ?>
-            
-		<?php
-		if ( is_single() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
+		<?php the_title( sprintf( '<h2 class="entry-title index-excerpt"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
-		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
+		<?php if ( 'post' === get_post_type() ) : ?>
+		<div class="index-entry-meta">
 			<?php horse_website_posted_on(); ?>
 		</div><!-- .entry-meta -->
-		<?php
-		endif; ?>
+		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<div class="entry-content">
+	<div class="entry-content index-excerpt">
 		<?php
-			the_content( sprintf(
-				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'horse-website' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
-
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'horse-website' ),
-				'after'  => '</div>',
-			) );
+		the_excerpt();
+//		
+//			the_content( sprintf(
+//				
+//				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>',  horse'website_ ), array( 'span' => array( 'class' => array() ) ) ),
+//				the_title( '<span class="screen-reader-text">"', '"</span>', false )
+//			) );
 		?>
-	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
 		<?php horse_website_entry_footer(); ?>

@@ -37,6 +37,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Widgets
 # Header
 # Content
+        ## Indexes
 	## Posts and pages
         ## Aside
 	## Comments
@@ -1205,9 +1206,80 @@ input[type=text]:focus {
 	}
 }
 
+.page-title{
+    text-align: center;
+    font-style: italic;
+    font-size: 1.4em;
+}
+
+.page-header::after{
+    display: block;
+    content: "";
+    width: 3.5em;
+    border-bottom: 1px solid #c3c3c3;
+    margin: 2em auto;
+
+}
+
+/*--------------------------------------------------------------
+## Indexes
+--------------------------------------------------------------*/
+.page-title {
+	text-align: center;
+	font-style: italic;
+	font-size: 1.4em;
+}
+
+.page-header::after {
+	display: block;
+	content: "";
+	width: 3.5em;
+	border-bottom: 1px solid #c3c3c3;
+	margin: 2em auto;
+}
+
+.entry-title.index-excerpt {
+	margin-top: 2em;
+	margin-bottom: .5em;
+	font-size: 1.5em;
+        text-align: center;
+}
+
+.entry-header .index-entry-meta {
+	font-size: .8em;
+}
+
+.entry-content.index-excerpt {
+	margin-top: .3em;
+}
+
+@media screen and (min-width: 30em) {
+	.entry-title.index-excerpt {
+		margin-top: 1.5em;
+		font-size: 2em;
+	}
+
+	.index-entry-meta {
+		font-size: 1em;
+	}
+
+	.index-entry-meta .byline,
+	.index-entry-meta .posted-on,
+	.index-entry-meta .comments-link {
+		display: inline-block;
+	}
+
+	.index-entry-meta .byline::after,
+	.index-entry-meta .comments-link::before {
+		content: "|";
+		padding: 0 1em;
+	}
+}
+
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
+
 .entry-content a,
 .entry-content a,
 .entry-summary a,
@@ -1417,8 +1489,9 @@ input[type=text]:focus {
 	width: 3.5em;
 }
 
-.entry-footer {
-	font-family: "Open Sans", sans-serif;
+.entry-footer,
+.index-entry-meta {
+	font-family: "Fira Sans", sans-serif;
 	font-size: 95%;
 	font-style: italic;
 	text-align: center;
@@ -1444,7 +1517,8 @@ input[type=text]:focus {
 	padding: 0;
 }
 
-.entry-footer span a {
+.entry-footer span a,
+.index-entry-meta a {
 	font-weight: 700;
 	text-decoration: none;
 	color: #000;
@@ -1811,14 +1885,16 @@ img.alignleft {
 	margin-bottom: 1.5em;
 }
 
-.centered-image {
+.centered-image,
+.featured-image{
 	max-width: calc(100% + 2.8em);
 	margin: 1.5em -1.4em;
 }
 
 @media screen and (min-width: 30em) {
 	
-	.centered-image {
+	.centered-image,
+        .featured-image{
 		max-width: calc(100% + 3.6em);
 		margin: 1.5em -1.8em;
 	}
@@ -1852,6 +1928,28 @@ img.alignleft {
 		margin-left: -3em;
 	}
 }
+
+.feaured-image{
+    margin-top: -1.4em;
+    margin-bottom: -1.2em;
+}
+
+@media screen and (min-width: 30em){
+    .featured-image{
+        margin-top: -1.8em;
+    }
+}
+
+@media screen and (min-width: 30em){
+    .featured-image{
+        margin-top: 3em;
+    }     
+}
+
+.featured-image img{
+        background-color: blue;
+        display: block;
+        margin: 0 auto;
 
 /*--------------------------------------------------------------
 ## Galleries

@@ -42,6 +42,7 @@ function horse_website_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
         set_post_thumbnail_size(828,360, true);
+        add_image_size('horse-website-small-thumb', 300, 150, true);
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
