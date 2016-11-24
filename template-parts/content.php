@@ -10,7 +10,18 @@
 
 <<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title index-excerpt"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+            
+            <?php 
+		if ( has_post_thumbnail() ) { ?>
+			<figure class="featured-image">
+                            <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+				<?php the_post_thumbnail(); ?>
+                            </a>
+			</figure>
+		<?php }
+		?>
+            
+            <?php the_title( sprintf( '<h2 class="entry-title index-excerpt"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="index-entry-meta">
@@ -21,16 +32,18 @@
 
 	<div class="entry-content index-excerpt">
 		<?php
-		the_excerpt();
-//		
-//			the_content( sprintf(
-//				
-//				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>',  horse'website_ ), array( 'span' => array( 'class' => array() ) ) ),
-//				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-//			) );
+                    the_excerpt();
 		?>
-
-	<footer class="entry-footer">
-		<?php horse_website_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+        </div><!-- .entry-content -->
+        
+        <div class="continue-reading">
+            <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+                <?php
+                    printf(
+			wp_kses( __( 'Continue reading %s',  'hose-website' ), array( 'span' => array( 'class' => array() ) ) ),
+			the_title( '<span class="screen-reader-text">"', '"</span>', false )
+		 );
+                
+                ?>
+        </div>
+    </article><!-- #post-## -->
