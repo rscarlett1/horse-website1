@@ -218,7 +218,7 @@ function horse_website_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'horse_website_excerpt_more' );
 
-if ( ! function_exists( 'twentyfourteen_paging_nav' ) ) :
+if ( ! function_exists( 'horse_website_paging_nav' ) ) :
 /**
  * Display navigation to next/previous set of posts when applicable.
  *
@@ -229,27 +229,21 @@ if ( ! function_exists( 'twentyfourteen_paging_nav' ) ) :
  */
 function horse_website_paging_nav() {
 	global $wp_query, $wp_rewrite;
-
 	// Don't print empty markup if there's only one page.
 	if ( $wp_query->max_num_pages < 2 ) {
 		return;
 	}
-
 	$paged        = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
 	$pagenum_link = html_entity_decode( get_pagenum_link() );
 	$query_args   = array();
 	$url_parts    = explode( '?', $pagenum_link );
-
 	if ( isset( $url_parts[1] ) ) {
 		wp_parse_str( $url_parts[1], $query_args );
 	}
-
 	$pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
 	$pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
-
 	$format  = $wp_rewrite->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
 	$format .= $wp_rewrite->using_permalinks() ? user_trailingslashit( $wp_rewrite->pagination_base . '/%#%', 'paged' ) : '?paged=%#%';
-
 	// Set up paginated links.
 	$links = paginate_links( array(
 		'base'     => $pagenum_link,
@@ -258,18 +252,17 @@ function horse_website_paging_nav() {
 		'current'  => $paged,
 		'mid_size' => 1,
 		'add_args' => array_map( 'urlencode', $query_args ),
-		'prev_text' => __( '&larr; Previous', 'twentyfourteen' ),
-		'next_text' => __( 'Next &rarr;', 'twentyfourteen' ),
-                'type' => 'list'
+		'prev_text' => __( '&larr; Previous', 'horse-website' ),
+		'next_text' => __( 'Next &rarr;', 'horse-website' ),
+		'type'		=> 'list',
 	) );
-
+        
 	if ( $links ) :
-
 	?>
 	<nav class="navigation paging-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'twentyfourteen' ); ?></h1>
-			<?php echo $links; ?>
-		</nav><!-- .navigation -->
+		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'horse-website' ); ?></h1>
+		<?php echo $links; ?>
+	</nav><!-- .navigation -->
 	<?php
 	endif;
 }
